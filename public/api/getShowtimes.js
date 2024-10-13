@@ -10,7 +10,7 @@ export default async function handler(req, res) {
             'https://www.majorcineplex.com/booking2/get_showtime',
             qs.stringify({
                 cinema_text, // ID สาขา
-                date_link: '2024-10-13' // วันที่ YYYY-MM-DD
+                date_link: new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Bangkok' }) // วันที่ YYYY-MM-DD
             })
         );
 
