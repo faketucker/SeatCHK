@@ -16,7 +16,15 @@ export default async function handler(req, res) {
                 headers: {
                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
                     'Referer': 'https://www.majorcineplex.com/',
-                    'Origin': 'https://www.majorcineplex.com/'
+                    'Origin': 'https://www.majorcineplex.com/',
+                    'Accept': '*/*',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Accept-Language': 'th-TH,th;q=0.9,en;q=0.8',
+                    'Connection': 'keep-alive',
+                    'Host': 'www.majorcineplex.com',
+                    'Sec-Fetch-Dest': 'empty',
+                    'Sec-Fetch-Mode': 'cors',
+                    'Sec-Fetch-Site': 'same-origin'
                 }
             }
         );
@@ -88,7 +96,15 @@ export default async function handler(req, res) {
                             headers: {
                                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
                                 'Referer': 'https://www.majorcineplex.com/',
-                                'Origin': 'https://www.majorcineplex.com/'
+                                'Origin': 'https://www.majorcineplex.com/',
+                                'Accept': '*/*',
+                                'Accept-Encoding': 'gzip, deflate, br',
+                                'Accept-Language': 'th-TH,th;q=0.9,en;q=0.8',
+                                'Connection': 'keep-alive',
+                                'Host': 'www.majorcineplex.com',
+                                'Sec-Fetch-Dest': 'empty',
+                                'Sec-Fetch-Mode': 'cors',
+                                'Sec-Fetch-Site': 'same-origin'
                             }
                         }
                     );
