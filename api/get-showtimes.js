@@ -1,11 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 import * as cheerio from 'cheerio';
-import express from 'express';
 
-const app = express();
-
-async function handler(req, res) {
+export default async function handler(req, res) {
     const { cinema_text } = req.query;
 
     try {
@@ -66,30 +63,29 @@ async function handler(req, res) {
             });
 
             movies.push({ title, time, theatres });
+        });
 
-            // ลูปการดึงจำนวนที่นั่งที่จองไปแล้ว
+        // ลูปการดึงจำนวนที่นั่งที่จองไปแล้ว
+        for (const movie of movies) {
+            for (const theatre of movie.theatres) {
+                // เอารอบหนังจากใน array showtimes ของ object theatre มาลูปทุกรอบ
+                for (const showtime of theatre.showtimes) {
+                    const queryParams = qs.stringify({
+                        _: '1728737645831',  // เลขบอกถึงอะไรไม่รู้ แต่ต้องมีเพื่อ API รับ request
+                    });
 
-            // เอารายชื่อโรงหนังจากใน array theatres มาลูปให้ครบทุกโรง
-            for (const movie of movies) {
-                for (const theatre of movie.theatres) {
-                    // เอารอบหนังจากใน array showtimes ของ object theatre มาลูปทุกรอบ
-                    for (const showtime of theatre.showtimes) {
-                        const queryParams = qs.stringify({
-                            _: '1728737645831',  // เลขบอกถึงอะไรไม่รู้ แต่ต้องมีเพื่อ API รับ request
-                        });
+                    const seatIdResponse = await axios.get(
+                        //ใช้เลขไอดีของรอบหนังนั้น ๆ ดึงข้อมูลจำนวนที่นั่งที่จองไปแล้ว
+                        `https://www.majorcineplex.com/booking2/get_seat/${showtime.dataShowtime}?${queryParams}`,
+                    );
 
-                        const seatIdResponse = await axios.get(
-                            //ใช้เลขไอดีของรอบหนังนั้น ๆ ดึงข้อมูลจำนวนที่นั่งที่จองไปแล้ว
-                            `https://www.majorcineplex.com/booking2/get_seat/${showtime.dataShowtime}?${queryParams}`,
-                        );
-
-                        // นับจำนวนที่นั่งที่จองไปแล้ว โดยดูจาก status 1 คือมีคนจอง
-                        const takenSeatCount = (seatIdResponse.data.toLowerCase().match(/"status":1/gi) || []).length;
-                        showtime.seatTaken = takenSeatCount;
-                    }
+                    // นับจำนวนที่นั่งที่จองไปแล้ว โดยดูจาก status 1 คือมีคนจอง
+                    const takenSeatCount = (seatIdResponse.data.toLowerCase().match(/"status":1/gi) || []).length;
+                    showtime.seatTaken = takenSeatCount;
+                    delete showtime.dataShowtime; // Remove dataShowtime from the response
                 }
             }
-        });
+        }
 
         res.status(200).json(movies);
     } catch (error) {
@@ -97,10 +93,3 @@ async function handler(req, res) {
         res.status(500).json({ error: 'Error fetching showtime' });
     }
 }
-
-app.get('/get-showtimes', handler);
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});

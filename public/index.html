@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Major SeatCHK</title>
+    <title>SeatCHK</title>
+    <link rel="stylesheet" href="./style.css">
+    
 </head>
 <body>
-    <h1>Showtimes</h1>
-    <label for="cinema">Select Cinema:</label>
+    <h1><i class="fa-solid fa-film"></i> SeatCHK</h1>
+    <p>ระบบดึงจำนวนลูกค้าตามที่นั่งที่ถูกจองของโรงภาพยนตร์ในเครือ Major Cinplex</p>
+    <p id="disclaimer">*API ของ Major ดึงได้แค่รอบหนังที่ยังทำการซื้อตั๋วได้เท่านั้น</p>
+    <label for="cinema">เลือกสาขา:</label>
     <select id="cinema">
         <option value="118">Promenade Cineplex</option>
     </select>
-    <button id="fetchShowtimes">Fetch Showtimes</button>
+    <button id="fetchShowtimes">ดึงข้อมูล</button>
     <div id="showtimes"></div>
 <script src="./index.js"></script>
+<script src="https://kit.fontawesome.com/682351f74d.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
+
+body {
+    font-family: 'Anuphan', sans-serif;
+    background-color: #181C14;
+    max-width: 100vw;
+    margin: 10% 10%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ECDFCC;
+}
+
+h2, h3, #showtimes {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ECDFCC;
+}
+
+p {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+#disclaimer {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #ECDFCC;
+}
+
+label {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+button {
+    font-family: 'Anuphan', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #181C14;
+    background-color: #9dc98e;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+select {
+    font-family: 'Anuphan', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #3C3D37;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.showtime-list {
+    color: #ffffff;
+}
