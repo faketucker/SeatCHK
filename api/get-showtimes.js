@@ -25,7 +25,8 @@ export default async function handler(req, res) {
                     'Sec-Fetch-Dest': 'empty',
                     'Sec-Fetch-Mode': 'cors',
                     'Sec-Fetch-Site': 'same-origin'
-                }
+                },
+                withCredentials: false
             }
         );
 
@@ -105,7 +106,8 @@ export default async function handler(req, res) {
                                 'Sec-Fetch-Dest': 'empty',
                                 'Sec-Fetch-Mode': 'cors',
                                 'Sec-Fetch-Site': 'same-origin'
-                            }
+                            },
+                            withCredentials: false
                         }
                     );
 
