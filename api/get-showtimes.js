@@ -89,7 +89,7 @@ export default async function handler(req, res) {
 
         res.status(200).json(movies);
     } catch (error) {
-        console.error('Error fetching showtime:', error);
-        res.status(500).json({ error: 'Error fetching showtime' });
+        console.error('Error fetching showtime:', error.message);
+        res.status(500).json({ error: 'Error fetching showtime', details: error.message });
     }
 }
