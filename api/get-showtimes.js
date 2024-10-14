@@ -71,7 +71,7 @@ export default async function handler(req, res) {
                 // เอารอบหนังจากใน array showtimes ของ object theatre มาลูปทุกรอบ
                 for (const showtime of theatre.showtimes) {
                     const queryParams = qs.stringify({
-                        _: '1728737645831',  // เลขบอกถึงอะไรไม่รู้ แต่ต้องมีเพื่อ API รับ request
+                        _: '1728737645831',  // เลขบอกถึงอะไรไม่รู้ แต่ต้องมีเพื่อให้ API รับ request
                     });
 
                     const seatIdResponse = await axios.get(
