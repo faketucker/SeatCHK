@@ -14,7 +14,9 @@ export default async function handler(req, res) {
             }),
             {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+                    'Referer': 'https://www.majorcineplex.com/',
+                    'Origin': 'https://www.majorcineplex.com/'
                 }
             }
         );
@@ -82,6 +84,13 @@ export default async function handler(req, res) {
                     const seatIdResponse = await axios.get(
                         //ใช้เลขไอดีของรอบหนังนั้น ๆ ดึงข้อมูลจำนวนที่นั่งที่จองไปแล้ว
                         `https://www.majorcineplex.com/booking2/get_seat/${showtime.dataShowtime}?${queryParams}`,
+                        {
+                            headers: {
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+                                'Referer': 'https://www.majorcineplex.com/',
+                                'Origin': 'https://www.majorcineplex.com/'
+                            }
+                        }
                     );
 
                     // นับจำนวนที่นั่งที่จองไปแล้ว โดยดูจาก status 1 คือมีคนจอง
